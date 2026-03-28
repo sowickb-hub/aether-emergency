@@ -605,6 +605,15 @@ def analyze_crisis(text: str, images: list) -> dict | None:
 with col_output:
     st.markdown('<div class="panel-label">Emergency Dispatch Intelligence</div>', unsafe_allow_html=True)
 
+    if dispatch_btn:
+        if not crisis_text.strip():
+            st.warning("⚠️ Please enter crisis data before analyzing.")
+        else:
+            with st.spinner("🔄 ANALYZING CRISIS DATA — AI ENGINE PROCESSING..."):
+                result = analyze_crisis(crisis_text, uploaded_files or [])
+                if result:
+                    st.session_state["dispatch_result"] = result
+
     if "dispatch_result" not in st.session_state:
         # Empty state
         st.markdown("""
@@ -726,16 +735,4 @@ with col_output:
                 use_container_width=True,
             )
 
-# ─────────────────────────────────────────────
-#  Handle Dispatch Button
-# ─────────────────────────────────────────────
-if dispatch_btn:
-    if not crisis_text.strip():
-        st.warning("⚠️ Please enter crisis data before analyzing.")
-        st.stop()
 
-    with st.spinner("🔄 ANALYZING CRISIS DATA — AI ENGINE PROCESSING..."):
-        result = analyze_crisis(crisis_text, uploaded_files or [])
-        if result:
-            st.session_state["dispatch_result"] = result
-            st.rerun()
