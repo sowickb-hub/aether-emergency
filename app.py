@@ -10,7 +10,7 @@ import google.generativeai as genai
 #  Page Config  (must be first Streamlit call)
 # ─────────────────────────────────────────────
 st.set_page_config(
-    page_title="LifePulse — Emergency Dispatch AI",
+    page_title="Aether Emergency — Emergency Dispatch AI",
     page_icon="🚨",
     layout="wide",
     initial_sidebar_state="collapsed",
@@ -80,13 +80,13 @@ html, body, [class*="css"] {
 }
 
 /* === Header === */
-.lifepulse-header {
+.aether-emergency-header {
     text-align: center;
     padding: 2rem 1rem 1rem;
     position: relative;
 }
 
-.lifepulse-title {
+.aether-emergency-title {
     font-family: 'Orbitron', monospace;
     font-size: 3.8rem;
     font-weight: 900;
@@ -105,7 +105,7 @@ html, body, [class*="css"] {
     to   { text-shadow: 0 0 20px var(--neon-crimson), 0 0 50px var(--neon-crimson), 0 0 90px rgba(255,0,60,0.7), 0 0 120px rgba(255,0,60,0.3); }
 }
 
-.lifepulse-subtitle {
+.aether-emergency-subtitle {
     font-family: 'Share Tech Mono', monospace;
     font-size: 0.95rem;
     color: var(--text-muted);
@@ -114,7 +114,7 @@ html, body, [class*="css"] {
     margin-top: 0.4rem;
 }
 
-.lifepulse-divider {
+.aether-emergency-divider {
     height: 2px;
     background: linear-gradient(90deg, transparent, var(--neon-crimson), var(--neon-orange), transparent);
     margin: 1.5rem auto;
@@ -440,10 +440,10 @@ def get_gemini_client():
 #  Header
 # ─────────────────────────────────────────────
 st.markdown("""
-<div class="lifepulse-header">
-    <p class="lifepulse-title">🚨 LIFEPULSE</p>
-    <p class="lifepulse-subtitle">Emergency Dispatch Intelligence System // v2.0.6</p>
-    <hr class="lifepulse-divider">
+<div class="aether-emergency-header">
+    <p class="aether-emergency-title">🚨 LIFEPULSE</p>
+    <p class="aether-emergency-subtitle">Emergency Dispatch Intelligence System // v2.0.6</p>
+    <hr class="aether-emergency-divider">
 </div>
 """, unsafe_allow_html=True)
 
@@ -478,9 +478,9 @@ with st.sidebar:
         st.success("✅ API key configured")
 
     st.markdown("---")
-    st.markdown("### ℹ️ About LifePulse")
+    st.markdown("### ℹ️ About Aether Emergency")
     st.markdown("""
-    **LifePulse** is an AI-powered emergency dispatch bridge that converts unstructured crisis reports into actionable, structured intelligence.
+    **Aether Emergency** is an AI-powered emergency dispatch bridge that converts unstructured crisis reports into actionable, structured intelligence.
 
     - 🔴 **Red** — Critical / Life-threatening
     - 🟠 **Orange** — Serious / Urgent
@@ -536,7 +536,7 @@ with col_input:
 #  Gemini Analysis Function
 # ══════════════════════════════════════════════
 SYSTEM_PROMPT = """
-You are LifePulse, an elite Emergency Dispatch AI. Analyze the crisis data provided and return a structured assessment.
+You are Aether Emergency, an elite Emergency Dispatch AI. Analyze the crisis data provided and return a structured assessment.
 
 IMPORTANT: Respond ONLY with valid JSON in the exact schema below (no markdown, no extra text):
 
@@ -730,7 +730,7 @@ with col_output:
             st.download_button(
                 "⬇️ Download JSON",
                 data=json_str,
-                file_name="lifepulse_dispatch.json",
+                file_name="aether-emergency_dispatch.json",
                 mime="application/json",
                 use_container_width=True,
             )

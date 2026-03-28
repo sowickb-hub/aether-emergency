@@ -1,4 +1,4 @@
-# 🚨 LifePulse — Emergency Dispatch Intelligence System
+# 🚨 Aether Emergency — Emergency Dispatch Intelligence System
 
 <div align="center">
 
@@ -24,25 +24,25 @@
 
 ---
 
-## 🎯 What LifePulse Does
+## 🎯 What Aether Emergency Does
 
-**LifePulse** transforms chaotic, unstructured crisis communications into structured, actionable **Emergency Dispatch Intelligence** — in real time. Emergency operators paste raw incident reports; LifePulse uses Google Gemini's multimodal AI to instantly parse them into color-coded hazard assessments, unit recommendations, and machine-readable dispatch packets.
+**Aether Emergency** transforms chaotic, unstructured crisis communications into structured, actionable **Emergency Dispatch Intelligence** — in real time. Emergency operators paste raw incident reports; Aether Emergency uses Google Gemini's multimodal AI to instantly parse them into color-coded hazard assessments, unit recommendations, and machine-readable dispatch packets.
 
-> **"Every second matters. LifePulse makes every second count."**
+> **"Every second matters. Aether Emergency makes every second count."**
 
 ---
 
 ## ⭐ Technical Merit
 
 ### 1. Multimodal AI at the Core
-LifePulse harnesses **Google Gemini 2.0 Flash**'s multimodal capabilities to simultaneously reason over:
+Aether Emergency harnesses **Google Gemini 2.0 Flash**'s multimodal capabilities to simultaneously reason over:
 - **Unstructured text** — raw crisis reports from callers, field units, or public feeds
 - **Visual evidence** — uploaded scene photographs analyzed for hazard indicators
 
 Both modalities are packaged into a single API call using the `google-generativeai` SDK's `inline_data` pattern, enabling real-time cross-modal inference with sub-3-second response times.
 
 ### 2. Zero-Schema Extraction via Prompt Engineering
-Instead of relying on NER pipelines, regex rules, or fine-tuned models, LifePulse uses a single **constrained JSON prompt** to extract a rich 13-field structured schema from arbitrary natural language. The schema covers:
+Instead of relying on NER pipelines, regex rules, or fine-tuned models, Aether Emergency uses a single **constrained JSON prompt** to extract a rich 13-field structured schema from arbitrary natural language. The schema covers:
 - Hazard classification (RED / ORANGE / YELLOW)
 - Primary & secondary emergency service needs
 - Location extraction, casualty estimation
@@ -85,10 +85,10 @@ The frontend is built with a custom CSS design system featuring:
 ### The Problem: The Communication Gap in Crisis Response
 Every year, thousands of emergency calls are lost in translation. Dispatchers receive fragmented, panic-driven descriptions; critical details get missed; wrong units are sent. In mass-casualty events, this bottleneck costs lives.
 
-### LifePulse as a Societal Bridge
-LifePulse directly addresses the **Universal Bridge** challenge by:
+### Aether Emergency as a Societal Bridge
+Aether Emergency directly addresses the **Universal Bridge** challenge by:
 
-| Challenge | LifePulse Solution |
+| Challenge | Aether Emergency Solution |
 |-----------|-------------------|
 | Unstructured crisis data | Gemini parses any natural language format |
 | Multi-modal incidents | Vision + text processed in one request |
@@ -104,7 +104,7 @@ LifePulse directly addresses the **Universal Bridge** challenge by:
 - **📡 911 Call Centers** — Augment dispatcher judgment with AI-validated severity scores
 
 ### Ethical Safeguards
-- **AI as assistant, not replacement** — LifePulse surfaces AI confidence scores, ensuring dispatchers maintain decision authority
+- **AI as assistant, not replacement** — Aether Emergency surfaces AI confidence scores, ensuring dispatchers maintain decision authority
 - **No PII storage** — All processing is ephemeral; no data is persisted beyond the session
 - **Fail-safe design** — Errors surface clearly; the system never silently degrades
 
@@ -117,7 +117,7 @@ LifePulse directly addresses the **Universal Bridge** challenge by:
 ```bash
 # 1. Clone and enter project
 git clone <repo-url>
-cd lifepulse
+cd aether-emergency
 
 # 2. Create virtual environment
 python -m venv .venv
@@ -131,7 +131,7 @@ pip install -r requirements.txt
 $env:GOOGLE_API_KEY = "your-api-key-here"   # Windows PowerShell
 # export GOOGLE_API_KEY="your-api-key-here"  # Linux/macOS
 
-# 5. Run LifePulse
+# 5. Run Aether Emergency
 streamlit run app.py
 ```
 
@@ -158,13 +158,13 @@ gcloud config set project YOUR_PROJECT_ID
 gcloud services enable run.googleapis.com containerregistry.googleapis.com
 
 # Build and push to Google Container Registry
-gcloud builds submit --tag gcr.io/YOUR_PROJECT_ID/lifepulse .
+gcloud builds submit --tag gcr.io/YOUR_PROJECT_ID/aether-emergency .
 ```
 
 ### Step 2 — Deploy to Cloud Run
 ```bash
-gcloud run deploy lifepulse \
-  --image gcr.io/YOUR_PROJECT_ID/lifepulse \
+gcloud run deploy aether-emergency \
+  --image gcr.io/YOUR_PROJECT_ID/aether-emergency \
   --platform managed \
   --region us-central1 \
   --port 8080 \
@@ -188,7 +188,7 @@ gcloud secrets add-iam-policy-binding GOOGLE_API_KEY \
   --role="roles/secretmanager.secretAccessor"
 
 # Deploy with secret reference
-gcloud run deploy lifepulse \
+gcloud run deploy aether-emergency \
   --set-secrets GOOGLE_API_KEY=GOOGLE_API_KEY:latest \
   ...
 ```
@@ -220,7 +220,7 @@ gcloud run deploy lifepulse \
 ## 🗂️ Project Structure
 
 ```
-lifepulse/
+aether-emergency/
 ├── app.py                  # Main Streamlit application
 ├── requirements.txt        # Python dependencies
 ├── Dockerfile              # Cloud Run-optimised multi-stage image

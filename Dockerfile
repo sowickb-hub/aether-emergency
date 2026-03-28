@@ -1,5 +1,5 @@
 # ──────────────────────────────────────────────────────────
-#  LifePulse — Dockerfile for Google Cloud Run
+#  Aether Emergency — Dockerfile for Google Cloud Run
 #  Multi-stage build optimised for cold-start performance
 # ──────────────────────────────────────────────────────────
 
@@ -23,7 +23,7 @@ RUN pip install --upgrade pip \
 FROM python:3.11-slim AS runtime
 
 # ── Non-root user for Cloud Run security best practice
-RUN addgroup --system lifepulse && adduser --system --ingroup lifepulse lifepulse
+RUN addgroup --system aether-emergency && adduser --system --ingroup aether-emergency aether-emergency
 
 WORKDIR /app
 
@@ -44,7 +44,7 @@ ENV PORT=8080 \
     STREAMLIT_SERVER_ENABLE_CORS=false \
     STREAMLIT_BROWSER_GATHER_USAGE_STATS=false
 
-USER lifepulse
+USER aether-emergency
 
 EXPOSE 8080
 
